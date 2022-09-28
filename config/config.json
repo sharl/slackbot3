@@ -1,0 +1,16 @@
+{
+    "name": "hamu",
+    "icon_emoji": ":hamster:",
+    "modules": {
+        "message.amedas": null,
+        "message.amesh": null,
+        "message.typhoon": null,
+        "message.amehamu": null,
+        "message.yukihamu": null,
+        "message.thunder": null,
+        "message.tenkizu": null,
+        "reaction_added.delete_bot_message": {
+            "reaction": "see_no_evil"
+	}
+    }
+}
