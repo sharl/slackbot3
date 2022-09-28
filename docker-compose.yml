@@ -1,0 +1,11 @@
+version: '2.1'
+
+services:
+  slackbot3:
+    container_name: slackbot3
+    build: ./
+    volumes:
+      - "./config:/config"
+    environment:
+      AMEDAS:
+      SLACK_TOKEN:

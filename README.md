@@ -22,3 +22,8 @@ pip install --upgrade slack_sdk aiohttp requests bs4
 ```
 $ SLACK_TOKEN=xoxb-hogehoge ./slackbot3.py
 ```
+
+## Appendix
+```
+SLACK_TOKEN=xoxb-hogehoge docker-compose up -p project_name -d
+```
