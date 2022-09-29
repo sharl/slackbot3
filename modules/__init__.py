@@ -23,7 +23,7 @@ class App:
         try:
             with open('/config/config.json') as fd:
                 config = json.load(fd)
-        except Exception as e:
+        except Exception:
             with open('config/config.json') as fd:
                 config = json.load(fd)
 
