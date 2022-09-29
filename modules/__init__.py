@@ -3,6 +3,7 @@ import os
 import sys
 import json
 import importlib
+from datetime import datetime
 
 from slack_sdk.rtm import RTMClient
 
@@ -59,6 +60,25 @@ class Caches:
                 self.channel_ids[channel_id] = channel_id
 
 
+class Logger:
+    def __init__(self):
+        pass
+
+    def log(self, payload):
+        rtmclient = payload.get('rtm_client')
+        item = payload.get('data')
+        if rtmclient and item and item.get('subtype', None) is None:
+            text = item.get('text')
+            user = item.get('user')
+            channel = item.get('channel')
+            ts = item.get('ts')
+            if text and user and channel and ts:
+                print('{} {}> {}: {}'.format(datetime.fromtimestamp(float(ts)).strftime('%H:%M:%S'),
+                                             rtmclient.caches.channel_ids[channel],
+                                             rtmclient.caches.user_ids[user],
+                                             text))
+
+
 class App:
     rtmclient = None
     modules = {}
@@ -92,13 +112,14 @@ class App:
                 docs.append(doc)
         self.doc = '\n'.join(docs)
 
-        # add members and cache
+        # add members and cache and logger
         self.rtmclient.doc = self.doc
         self.rtmclient.name = self.name
         self.rtmclient.icon_emoji = self.icon_emoji
         self.rtmclient.modules = self.modules
         self.rtmclient.options = self.options
         self.rtmclient.caches = Caches()
+        self.rtmclient.logger = Logger()
 
     def start(self):
         self.rtmclient.start()

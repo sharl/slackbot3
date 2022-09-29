@@ -6,6 +6,7 @@ from slack_sdk.rtm import RTMClient
 def message(**payload):
     rtmclient = payload['rtm_client']
     rtmclient.caches.parse(payload)
+    rtmclient.logger.log(payload)
 
     for module in rtmclient.modules:
         if module.startswith('message'):
