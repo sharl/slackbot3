@@ -27,3 +27,30 @@ $ SLACK_TOKEN=xoxb-hogehoge ./slackbot3.py
 ```
 SLACK_TOKEN=xoxb-hogehoge docker-compose up -p project_name -d
 ```
+
+## Module usage
+
+### message.switchbot.meter
+
+- config.json
+```
+        "message.switchbot.meter": {
+            "keyword": "wake word",
+            "user": "user name (NOT display name)",
+            "token": "<developer token>",
+            "device": "<device ID>"
+        }
+```
+
+### message.switchbot.plug
+
+- config.json
+```
+        "message.switchbot.plug": {
+            "on": "on wake word",
+            "off": "off wake word",
+            "user": "user name (NOT display name)",
+            "token": "<developer token>",
+            "device": "<device ID>"
+        }
+```
