@@ -1,6 +1,4 @@
 # -*- coding: utf-8 -*-
-import json
-
 import requests
 from bs4 import BeautifulSoup
 
@@ -27,11 +25,11 @@ class call:
                     icon_emoji=rtmclient.icon_emoji,
                     text=text,
                     blocks=[
-		        {
-			    'type': 'image',
-			    'image_url': div.img['src'],
-			    'alt_text': text,
-		        }
+                        {
+                            'type': 'image',
+                            'image_url': div.img['src'],
+                            'alt_text': text,
+                        }
                     ],
                     thread_ts=thread_ts,
                 )

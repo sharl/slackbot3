@@ -1,6 +1,4 @@
 # -*- coding: utf-8 -*-
-import json
-
 import requests
 from bs4 import BeautifulSoup
 
@@ -26,8 +24,8 @@ class call:
             if r and r.status_code == 200:
                 soup = BeautifulSoup(r.content, 'html.parser')
                 lis = soup.find_all('li', class_='tabView_item')
-                for l in lis[2:]:
-                    typhoons['台風' + l.a.text] = l.a['href']
+                for li in lis[2:]:
+                    typhoons['台風' + li.a.text] = li.a['href']
 
                 if text in typhoons:
                     url = typhoons[text]
@@ -41,11 +39,11 @@ class call:
                             icon_emoji=rtmclient.icon_emoji,
                             text=text,
                             blocks=[
-		                {
-			            'type': 'image',
-			            'image_url': div.img['src'],
-			            'alt_text': text,
-		                }
+                                {
+                                    'type': 'image',
+                                    'image_url': div.img['src'],
+                                    'alt_text': text,
+                                }
                             ],
                             thread_ts=thread_ts,
                         )
