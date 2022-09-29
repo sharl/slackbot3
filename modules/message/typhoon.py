@@ -14,18 +14,19 @@ class call:
         channel = item['channel']
         thread_ts = item.get('thread_ts')
 
+        keyword = '台風'
         url = 'https://typhoon.yahoo.co.jp/weather/jp/typhoon/'
         typhoons = {
-            '台風広域': url,
-            '台風': url + '?c=1',
+            keyword + '広域': url,
+            keyword: url + '?c=1',
         }
-        if item.get('subtype', None) is None:
+        if text.startswith(keyword) and item.get('subtype', None) is None:
             r = requests.get(url, timeout=10)
             if r and r.status_code == 200:
                 soup = BeautifulSoup(r.content, 'html.parser')
                 lis = soup.find_all('li', class_='tabView_item')
                 for li in lis[2:]:
-                    typhoons['台風' + li.a.text] = li.a['href']
+                    typhoons[keyword + li.a.text] = li.a['href']
 
                 if text in typhoons:
                     url = typhoons[text]
