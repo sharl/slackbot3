@@ -23,8 +23,8 @@ class call:
             if ' ' in loc:
                 loc, zoom = loc.split(' ')
             if not loc:
-                loc = '下呂'
-                zoom = '3'
+                loc = '日本'
+                zoom = '4'
             loc = loc.strip()
             zoom = zoom.strip()
             url = 'https://www.geocoding.jp/api/?q=' + quote(loc.encode('utf8'))
@@ -45,20 +45,22 @@ class call:
                         og_images = soup.find_all('meta', property="og:image")
                         if len(og_images) == 0:
                             return
-                        img_url = og_images[0].get('content').replace('600x600', '300x300')
+                        img_url = og_images[0].get('content')
                         print(img_url)
-                        r = requests.get(img_url, timeout=3)
-                        if r and r.status_code == 200:
-                            with open('/tmp/amehamu.png', 'wb') as fd:
-                                fd.write(r.content)
-                            webclient.files_upload(
-                                username=keyword,
-                                icon_emoji=rtmclient.icon_emoji,
-                                channels=channel,
-                                file='/tmp/amehamu.png',
-                                title=loc,
-                                thread_ts=thread_ts,
-                            )
+                        webclient.chat_postMessage(
+                            channel=channel,
+                            username=keyword,
+                            icon_emoji=rtmclient.icon_emoji,
+                            text=text,
+                            blocks=[
+                                {
+                                    'type': 'image',
+                                    'image_url': img_url,
+                                    'alt_text': text,
+                                }
+                            ],
+                            thread_ts=thread_ts,
+                        )
                     else:
                         webclient.chat_postMessage(
                             username=keyword,
