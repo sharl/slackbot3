@@ -72,6 +72,7 @@ class call:
                                     for j, f in enumerate(a['weatherCodes']):
                                         trans = {
                                             '203': 202,
+                                            '211': 210,
                                         }
                                         g = trans[f] if f in trans else f
 
