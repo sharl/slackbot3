@@ -2,6 +2,7 @@
     "name": "hamu",
     "icon_emoji": ":hamster:",
     "modules": {
+        "message._help": null,
         "message.amedas": null,
         "message.amesh": null,
         "message.typhoon": null,
@@ -9,8 +10,9 @@
         "message.yukihamu": null,
         "message.thunder": null,
         "message.tenkizu": null,
+        "message.weather": null,
         "reaction_added.delete_bot_message": {
             "reaction": "see_no_evil"
-	}
+        }
     }
 }
