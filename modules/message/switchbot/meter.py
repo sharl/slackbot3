@@ -12,7 +12,7 @@ class call:
         channel = item['channel']
         thread_ts = item.get('thread_ts')
 
-        if item.get('subtype') is None:
+        if item.get('bot_id') is None:
             module = __name__.replace('modules.', '')
             options = rtmclient.options[module]
             if isinstance(options, dict):

@@ -11,7 +11,7 @@ class call:
         channel = item['channel']
         ts = item.get('ts')
 
-        if item.get('subtype', None) is None:
+        if item.get('bot_id', None) is None:
             module = __name__.replace('modules.', '')
             options = rtmclient.options[module]
             if isinstance(options, dict):

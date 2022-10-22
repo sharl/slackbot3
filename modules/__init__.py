@@ -67,7 +67,7 @@ class Logger:
     def log(self, payload):
         rtmclient = payload.get('rtm_client')
         item = payload.get('data')
-        if rtmclient and item and item.get('subtype', None) is None:
+        if rtmclient and item and item.get('bot_id', None) is None:
             text = item.get('text')
             user = item.get('user')
             channel = item.get('channel')

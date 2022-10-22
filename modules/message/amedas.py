@@ -13,7 +13,7 @@ class call:
         thread_ts = item.get('thread_ts')
 
         prefix = 'アメダス'
-        if text.startswith(prefix) and item.get('subtype') is None:
+        if text.startswith(prefix) and item.get('bot_id') is None:
             loc = text.replace(prefix, '')
             amedas = subprocess.check_output(['amedas', loc]).decode('utf8').strip()
             webclient.chat_postMessage(

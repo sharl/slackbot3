@@ -13,7 +13,7 @@ class call:
         thread_ts = item.get('thread_ts')
 
         keyword = 'アメッシュ'
-        if text == keyword and item.get('subtype') is None:
+        if text == keyword and item.get('bot_id') is None:
             amesh = subprocess.check_output(['amesh', '-c'])
             with open('/tmp/amesh.png', 'wb') as fd:
                 fd.write(amesh)

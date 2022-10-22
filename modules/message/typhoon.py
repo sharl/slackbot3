@@ -20,7 +20,7 @@ class call:
             keyword + '広域': url,
             keyword: url + '?c=1',
         }
-        if text.startswith(keyword) and item.get('subtype', None) is None:
+        if text.startswith(keyword) and item.get('bot_id', None) is None:
             r = requests.get(url, timeout=10)
             if r and r.status_code == 200:
                 soup = BeautifulSoup(r.content, 'html.parser')

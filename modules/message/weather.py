@@ -110,7 +110,7 @@ class call:
         thread_ts = item.get('thread_ts')
 
         prefix = '天気'
-        if text.startswith(prefix) and item.get('subtype') is None:
+        if text.startswith(prefix) and item.get('bot_id') is None:
             loc = text.replace(prefix, '')
 
             r = requests.get(area_json)

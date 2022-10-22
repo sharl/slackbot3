@@ -18,7 +18,7 @@ class call:
 
         keyword = 'サンダー'
         zoom = '10'
-        if text.startswith(keyword) and item.get('subtype', None) is None:
+        if text.startswith(keyword) and item.get('bot_id', None) is None:
             loc = text.replace(keyword, '').strip()
             if ' ' in loc:
                 loc, zoom = loc.split(' ')

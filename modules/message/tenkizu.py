@@ -14,7 +14,7 @@ class call:
         thread_ts = item.get('thread_ts')
 
         url = 'https://weather.yahoo.co.jp/weather/chart/'
-        if text == '天気図' and item.get('subtype', None) is None:
+        if text == '天気図' and item.get('bot_id', None) is None:
             r = requests.get(url, timeout=10)
             if r and r.status_code == 200:
                 soup = BeautifulSoup(r.content, 'html.parser')
