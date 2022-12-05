@@ -60,7 +60,7 @@ SLACK_TOKEN=xoxb-hogehoge docker-compose up -p project_name -d
 - config.json
 ```
 	"message.openai": {
-	    "keyword": "hamu:",
+	    "prefix": "hamu:",
 	    "apikey": "sk-xxxxxx"
 	}
 ```
