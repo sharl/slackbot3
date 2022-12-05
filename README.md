@@ -54,3 +54,13 @@ SLACK_TOKEN=xoxb-hogehoge docker-compose up -p project_name -d
             "device": "<device ID>"
         }
 ```
+
+### message.openai
+
+- config.json
+```
+	"message.openai": {
+	    "keyword": "hamu:",
+	    "apikey": "sk-xxxxxx"
+	}
+```
